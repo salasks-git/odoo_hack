@@ -77,3 +77,4 @@ insertDiscount.run('WELCOME10', 'percentage', 10, 50000, 1, 100, null);
 insertDiscount.run('FLAT500', 'fixed', 50000, 100000, 1, 50, p1.id);
 
 console.log('Seeding complete.');
+

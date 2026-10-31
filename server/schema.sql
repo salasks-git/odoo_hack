@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
@@ -9,7 +9,7 @@ CREATE TABLE users (
   is_active INTEGER NOT NULL DEFAULT 1,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   type TEXT,
@@ -21,7 +21,7 @@ CREATE TABLE products (
   is_active INTEGER NOT NULL DEFAULT 1,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
-CREATE TABLE variants (
+CREATE TABLE IF NOT EXISTS variants (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   product_id INTEGER NOT NULL,
   name TEXT NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE variants (
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   FOREIGN KEY(product_id) REFERENCES products(id) ON DELETE CASCADE
 );
-CREATE TABLE plans (
+CREATE TABLE IF NOT EXISTS plans (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   product_id INTEGER NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE plans (
   FOREIGN KEY(product_id) REFERENCES products(id) ON DELETE CASCADE,
   FOREIGN KEY(variant_id) REFERENCES variants(id) ON DELETE SET NULL
 );
-CREATE TABLE discounts (
+CREATE TABLE IF NOT EXISTS discounts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   code TEXT NOT NULL UNIQUE,
   type TEXT NOT NULL CHECK (type IN ('percentage','fixed')),
