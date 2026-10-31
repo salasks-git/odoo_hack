@@ -1,6 +1,10 @@
 node_modules/
 dist/
+frontend/dist/
 server/finance.db
+backend/dev_finance.db
+*.db
+*.sqlite
 *.log
 .DS_Store
 Thumbs.db
